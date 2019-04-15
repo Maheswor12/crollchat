@@ -1,0 +1,11 @@
+#checking for the modrewrite module enable
+<IfModule mod_rewrite.c>
+  Options -Multiviews
+  RewriteEngine On
+  RewriteBase /crollchat/public
+  # these 2 line helps if there is any file in public folder it will directly access other wise it will forward to index.php
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  #$1 is variable
+  RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
